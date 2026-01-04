@@ -1,0 +1,32 @@
+{% extends "users/base.html" %}
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Профиль</h2>
+
+    {% if user.avatar %}
+        <img src="{{ user.avatar.url }}" alt="Аватар" class="avatar">
+    {% else %}
+        <div class="avatar avatar-placeholder">?</div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+
+        <label for="{{ form.bio.id_for_label }}">О себе</label>
+        {{ form.bio }}
+
+        <label for="{{ form.avatar.id_for_label }}">Аватар</label>
+        {{ form.avatar }}
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="{% url 'users:logout' %}" class="logout-link">Выйти</a>
+</div>
+{% endblock %}

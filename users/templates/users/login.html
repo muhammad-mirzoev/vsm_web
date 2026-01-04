@@ -1,0 +1,25 @@
+{% extends "users/base.html" %}
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Вход</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <label for="{{ form.username.id_for_label }}">Email</label>
+        {{ form.username }}
+
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+        {{ form.password }}
+
+        <button type="submit">Войти</button>
+    </form>
+
+    <p>
+        Нет аккаунта? <a href="{% url 'users:register' %}">Регистрация</a>
+    </p>
+</div>
+{% endblock %}
