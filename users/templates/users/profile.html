@@ -27,6 +27,14 @@
         <button type="submit">Сохранить</button>
     </form>
 
-    <a href="{% url 'users:logout' %}" class="logout-link">Выйти</a>
+    <header>
+        <nav style="text-align:center; color:#ffffff;">
+            <a href="{% url 'contacts:list' %}" class="btn btn-add">Контакты</a>
+        </nav>
+    </header>
+    <header>
+        <nav style="text-align:center;">
+        <a href="{% url 'users:logout' %}" class="logout-link">Выйти</a>
+    </header>
 </div>
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends "contacts/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="contacts-container">
+
+    <h2>Мои контакты</h2>
+
+    <h3>Друзья</h3>
+    <ul class="contacts-list">
+        {% for contact in friends %}
+        <li class="contact-item">
+            <div class="contact-user">
+                {% if contact.to_user.avatar %}
+                    <img src="{{ contact.to_user.avatar.url }}" class="contact-avatar">
+                {% else %}
+                    <div class="contact-avatar"></div>
+                {% endif %}
+                <span class="contact-username">{{ contact.to_user.username }}</span>
+            </div>
+        </li>
+        {% empty %}
+            <div class="empty-state">Нет друзей</div>
+        {% endfor %}
+    </ul>
+
+    <h3>Заявки</h3>
+    <ul class="contacts-list">
+        {% for req in incoming_requests %}
+        <li class="contact-item">
+            <span>{{ req.from_user.username }}</span>
+            <div class="contact-actions">
+                <a class="btn btn-accept" href="{% url 'contacts:accept' req.id %}">✔</a>
+                <a class="btn btn-reject" href="{% url 'contacts:reject' req.id %}">✖</a>
+            </div>
+        </li>
+        {% empty %}
+            <div class="empty-state">Нет заявок</div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
