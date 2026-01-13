@@ -18,6 +18,9 @@
                 {% endif %}
                 <span class="contact-username">{{ contact.to_user.username }}</span>
             </div>
+            <div class="contact-actions">
+                <a class="btn btn-delete" style="color:#ff1f1f" href="{% url 'contacts:remove' contact.id %}">Удалить</a>
+            </div>
         </li>
         {% empty %}
             <div class="empty-state">Нет друзей</div>

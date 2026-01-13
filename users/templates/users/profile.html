@@ -15,7 +15,7 @@
         {% csrf_token %}
         {{ form.non_field_errors }}
 
-        <label for="{{ form.username.id_for_label }}">Username</label>
+        <label for="{{ form.username.id_for_label }}">Имя</label>
         {{ form.username }}
 
         <label for="{{ form.bio.id_for_label }}">О себе</label>
@@ -24,17 +24,12 @@
         <label for="{{ form.avatar.id_for_label }}">Аватар</label>
         {{ form.avatar }}
 
-        <button type="submit">Сохранить</button>
+        <button type="submit" class="btn btn-add">Сохранить</button>
     </form>
 
-    <header>
-        <nav style="text-align:center; color:#ffffff;">
-            <a href="{% url 'contacts:list' %}" class="btn btn-add">Контакты</a>
-        </nav>
-    </header>
-    <header>
-        <nav style="text-align:center;">
+    <div class="profile-nav">
+        <a href="{% url 'contacts:list' %}" class="navbar" style="color:#fff">Контакты</a>
         <a href="{% url 'users:logout' %}" class="logout-link">Выйти</a>
-    </header>
+    </div>
 </div>
 {% endblock %}

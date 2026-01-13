@@ -77,3 +77,11 @@ def reject_request_view(request, pk):
     contact.save()
 
     return redirect('contacts:list')
+
+
+@login_required
+def remove_contact(request, contact_id):
+    contact = get_object_or_404(Contact, id=contact_id, from_user=request.user)
+    contact.delete()
+    Contact.objects.filter(from_user=contact.to_user, to_user=request.user).delete()
+    return redirect('contacts:list')

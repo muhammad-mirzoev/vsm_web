@@ -10,18 +10,21 @@
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <a href="{% url 'users:profile' %}">Профиль</a>
-        <a href="{% url 'contacts:add' %}">Добавить</a>
-        <a href="{% url 'users:logout' %}">Выйти</a>
-    </nav>
-</header>
+<body>
+    <div> <!-- Новый контейнер для flex layout -->
+        <header>
+            <nav class="navbar">
+                <a href="{% url 'users:profile' %}">Профиль</a>
+                <a href="{% url 'contacts:add' %}">Добавить</a>
+            </nav>
+        </header>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
+        <main class="container">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
 
 </body>
 </html>
